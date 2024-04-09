@@ -39,6 +39,8 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- jQuery -->
@@ -48,60 +50,74 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /* height: 100vh; */
+            height: 100vh;
         }
 
         /* Adjust form width for mobile */
-        /* @media (max-width: 576px) {
+        @media (max-width: 576px) {
             .form-container {
                 padding: 0 15px;
             }
-        } */
+        }
+
+        .input-with-icon {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: 10px center;
+            padding-left: 35px;
+            /* Adjust based on the size of the icon */
+        }
     </style>
+</head>
+
+</style>
 </head>
 
 <body>
     <div class="container form-container">
         <div class="row">
-            <div class="col-lg-6">
-                <form id="storeForm">
-                    <h2 class="mb-4">Store Details:</h2>
-                    <div class="form-group">
-                        <label for="storeName">What is the name of your Retail Store?</label>
-                        <input type="text" class="form-control" id="storeName" name="storeName" required>
+            <form id="storeForm">
+                <h2 class="mb-4">Store Details:</h2>
+                <div class="form-group">
+                    <label for="storeName">What is the name of your Retail Store?</label>
+                    <input type="text" class="form-control" id="storeName" name="storeName" required>
+                </div>
+                <div class="form-group">
+                    <label for="gstNumber">GST Number?</label>
+                    <input type="text" class="form-control" id="gstNumber" name="gstNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="multipleLocations">Do you have multiple locations?</label>
+                    <select class="form-control" id="multipleLocations" name="multipleLocations">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+
+                    <label for="storeAddress">Store Address</label>
+
+                    <input type="text" class="form-control input-with-icon " id="storeAddress" name="storeAddress" required placeholder="Location">
+                </div>
+                <div class="row">
+
+
+                    <div class="form-group col-lg-4 ">
+                        <label for="state">State / Province</label>
+                        <input type="text" class="form-control" id="state" name="state" required>
                     </div>
-                    <div class="form-group">
-                        <label for="gstNumber">GST Number?</label>
-                        <input type="text" class="form-control" id="gstNumber" name="gstNumber" required>
+                    <div class="form-group col-lg-4 ">
+
+                        <label for="city">City</label>
+                        <input type="text" class="form-control" id="city" name="city" required>
                     </div>
-                    <div class="form-group">
-                        <label for="multipleLocations">Do you have multiple locations?</label>
-                        <select class="form-control" id="multipleLocations" name="multipleLocations">
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
+                    <div class="form-group col-lg-4">
+                        <label for="zip">ZIP / Postal code</label>
+                        <input type="text" class="form-control" id="zip" name="zip" required>
                     </div>
-                    <div class="form-group">
-                        <label for="storeAddress">Store Address</label>
-                        <input type="text" class="form-control" id="storeAddress" name="storeAddress" required>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <div class="form-group col-md-4">
-                                <label for="state">State / Province</label>
-                                <input type="text" class="form-control" id="state" name="state" required>
-                            </div>
-                            <label for="city">City</label>
-                            <input type="text" class="form-control" id="city" name="city" required>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label for="zip">ZIP / Postal code</label>
-                            <input type="text" class="form-control" id="zip" name="zip" required>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Next</button>
-                </form>
-            </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Next</button>
+            </form>
         </div>
     </div>
 
