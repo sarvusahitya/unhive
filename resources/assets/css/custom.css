@@ -1,0 +1,8 @@
+.pagination-button{
+    background:#343957;
+    /* color:white  */
+}
+
+.pagination-button:hover {
+    color: white; /* Set the hover color to the same value as the initial state */
+}
