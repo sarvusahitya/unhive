@@ -99,7 +99,6 @@
 
 
 
-                    console.log("sd")
                     if (response.status == true) {
 
                         ShowToastMessage("Saved Successfully")
