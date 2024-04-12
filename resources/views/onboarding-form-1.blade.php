@@ -102,6 +102,11 @@
                     if (response.status == true) {
 
                         ShowToastMessage("Saved Successfully")
+                        console.log(response.data.guid);
+                        setTimeout(() => {
+
+                            window.location.href = "onboarding-form-2/" + response.data.guid;
+                        }, 800);
 
                     } else {
                         errorMessageHandler(response)

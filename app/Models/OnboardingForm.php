@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use Illuminate\Support\Str; // Import the Str facade
 
 class OnboardingForm extends Model
 {
@@ -14,6 +15,7 @@ class OnboardingForm extends Model
     use SoftDeletes;
     protected $table = "onboardingform";
     protected $fillable = [
+        'guid',
         "name_of_store",
         "gst_number",
         "do_you_have_multiple_location",
@@ -46,4 +48,19 @@ class OnboardingForm extends Model
         "cancelled_media_id",
         "adhar_media_id",
     ];
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($onboardingForm) {
+            // Check if the guid isn't already set
+            if (empty($onboardingForm->guid)) {
+                $onboardingForm->guid = Str::uuid()->toString();
+            }
+        });
+        // Default order for all queries on this model
+        static::addGlobalScope('order', function ($query) {
+            $query->orderBy('created_at', 'desc');
+        });
+    }
 }

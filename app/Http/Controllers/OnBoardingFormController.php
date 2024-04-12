@@ -73,7 +73,7 @@ class OnBoardingFormController extends Controller
                 return response()->json(['status' => false, 'message' => 'something went wrong', 'errors' => $validatorcheck->errors()], 200);
             }
 
-            $onboardingform = OnboardingForm::findOrFail($request->id);
+            $onboardingform = OnboardingForm::findOrFail($request->guid);
             $onboardingform->update($request->all());
             return response()->json(['status' => true, 'data' =>
             $onboardingform], 200);

@@ -14,9 +14,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('onboarding-form-1');
 });
 
-Route::get('/', function () {
+Route::get('/onboarding-form-1', function () {
     return view('onboarding-form-1');
+});
+Route::get('/onboarding-form-2/{id}', function () {
+    return view('onboarding-form-2');
+});
+Route::get('/onboarding-form-3', function () {
+    return view('onboarding-form-3');
+});
+Route::get('/onboarding-form-4', function () {
+    return view('onboarding-form-4');
+});
+Route::get('/onboarding-form-5', function () {
+    return view('onboarding-form-5');
 });
