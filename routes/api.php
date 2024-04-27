@@ -21,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('onboardingstep1', [OnBoardingFormController::class, 'OnboardingStep1']);
 Route::post('onboardingstep2', [OnBoardingFormController::class, 'UpdateOnboardingStep2']);
 Route::post('onboardingstep3', [OnBoardingFormController::class, 'UpdateOnboardingStep3']);
+Route::post('onboardingstep4', [OnBoardingFormController::class, 'UpdateOnboardingStep4']);

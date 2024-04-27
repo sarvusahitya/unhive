@@ -89,6 +89,7 @@
             var apiurl = "{{ config('constants.API_URL')}}onboardingstep1"
             var method = "POST";
             var formData = new FormData(form);
+
             $.ajax({
                 method: method,
                 url: apiurl,
@@ -105,7 +106,7 @@
                         console.log(response.data.guid);
                         setTimeout(() => {
 
-                            window.location.href = "onboarding-form-2/" + response.data.guid;
+                            window.location.href = "onboarding-form-2?guid=" + response.data.guid;
                         }, 800);
 
                     } else {

@@ -20,7 +20,7 @@ Route::get('/', function () {
 Route::get('/onboarding-form-1', function () {
     return view('onboarding-form-1');
 });
-Route::get('/onboarding-form-2/{id}', function () {
+Route::get('/onboarding-form-2', function () {
     return view('onboarding-form-2');
 });
 Route::get('/onboarding-form-3', function () {

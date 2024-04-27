@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
+
 
 class OnBoardingFormController extends Controller
 {
@@ -53,6 +55,8 @@ class OnBoardingFormController extends Controller
             Log::error('SQL: ' . $e->getSql());
             return response()->json(['status' => false, 'message' => 'something went wrong', 'errors' => ['database_error' => [$e->getMessage()]]], 200);
         } catch (Throwable $e) {
+
+
             Log::error('Server Error: ' . $e->getMessage());
             // Optionally, log the SQL query that caused the error
             return response()->json(['status' => false, 'message' => 'something went wrong', 'errors' => ['server_error' => [$e->getMessage()]]], 200);
@@ -64,6 +68,7 @@ class OnBoardingFormController extends Controller
             $validatorcheck = Validator::make($request->all(), [
                 'owner_full_name' => ['required'], // Validation rule for exactly 10 digits
                 'owner_mobile_no' => 'required',
+                'guid' => 'required',
                 'owner_mobile_countrycode' => 'required', // Example validation rules for password
                 'owner_mobile_countrystr' => 'required', // Example validation rules for password
                 'owner_email' => 'required', // Example validation rules for password
@@ -73,7 +78,7 @@ class OnBoardingFormController extends Controller
                 return response()->json(['status' => false, 'message' => 'something went wrong', 'errors' => $validatorcheck->errors()], 200);
             }
 
-            $onboardingform = OnboardingForm::findOrFail($request->guid);
+            $onboardingform = OnboardingForm::where('guid', $request->guid)->first();
             $onboardingform->update($request->all());
             return response()->json(['status' => true, 'data' =>
             $onboardingform], 200);
@@ -81,6 +86,7 @@ class OnBoardingFormController extends Controller
             // return response()->json($business);
         } catch (QueryException $e) {
             // Database-related error
+            print_r($e);
             Log::error('MySQL Error: ' . $e->getMessage());
             // Optionally, log the SQL query that caused the error
             Log::error('SQL: ' . $e->getSql());
@@ -106,7 +112,30 @@ class OnBoardingFormController extends Controller
             //     return response()->json(['status' => false, 'message' => 'something went wrong', 'errors' => $validatorcheck->errors()], 200);
             // }
 
-            $onboardingform = OnboardingForm::findOrFail($request->id);
+            $onboardingform = OnboardingForm::where('guid', $request->guid)->first();
+            $onboardingform->update($request->all());
+            return response()->json(['status' => true, 'data' =>
+            $onboardingform], 200);
+
+            // return response()->json($business);
+        } catch (QueryException $e) {
+            // Database-related error
+            Log::error('MySQL Error: ' . $e->getMessage());
+            // Optionally, log the SQL query that caused the error
+            Log::error('SQL: ' . $e->getSql());
+            return response()->json(['status' => false, 'message' => 'something went wrong', 'errors' => ['database_error' => [$e->getMessage()]]], 200);
+        } catch (Throwable $e) {
+            Log::error('Server Error: ' . $e->getMessage());
+            // Optionally, log the SQL query that caused the error
+            return response()->json(['status' => false, 'message' => 'something went wrong', 'errors' => ['server_error' => [$e->getMessage()]]], 200);
+        }
+    }
+
+    public function UpdateOnboardingStep4(Request $request, OnboardingForm $onboardingForm)
+    {
+        try {
+
+            $onboardingform = OnboardingForm::where('guid', $request->guid)->first();
             $onboardingform->update($request->all());
             return response()->json(['status' => true, 'data' =>
             $onboardingform], 200);
@@ -139,7 +168,7 @@ class OnBoardingFormController extends Controller
             //     return response()->json(['status' => false, 'message' => 'something went wrong', 'errors' => $validatorcheck->errors()], 200);
             // }
 
-            $onboardingform = OnboardingForm::findOrFail($request->id);
+            $onboardingform = OnboardingForm::where('guid', $request->guid)->first();
             $onboardingform->update($request->all());
             return response()->json(['status' => true, 'data' =>
             $onboardingform], 200);
