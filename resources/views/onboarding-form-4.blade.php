@@ -69,7 +69,7 @@
 
 
 
-                var apiurl = "{{ config('constants.API_URL')}}onboardingstep4"
+                var apiurl = "{{ config('constants.API_URL')}}onboardingstep3"
                 var method = "POST";
                 var formData = new FormData(form);
                 formData.append("guid", guid)

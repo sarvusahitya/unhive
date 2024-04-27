@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OnBoardingFormController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,4 +32,9 @@ Route::get('/onboarding-form-4', function () {
 });
 Route::get('/onboarding-form-5', function () {
     return view('onboarding-form-5');
+});
+Route::post('upload', [OnBoardingFormController::class, 'UpdateOnboardingStep4'])->name('upload');
+
+Route::get('/onboarding-form-6', function () {
+    return view('onboarding-form-6');
 });

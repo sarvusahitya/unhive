@@ -20,6 +20,6 @@ class Media extends Model
         'folder_name',
         'baseurl',
         'media_fullpath',
-        'is_uploaded_from_app'
+        'docuement_type'
     ];
 }
