@@ -21,9 +21,7 @@
     <meta name="twitter:description" content="RETAILERS ON-BOARDING PROCESS" />
     <meta name="twitter:title" content=" RETAILERS ON-BOARDING PROCESS | By continuing you will be filling a form that will onboard you as a retailer to our supply chain network for all telecom and IT products in Karnataka" />
     <meta name="twitter:image" content="{{URL::asset('resources')}}/assets/images/logo/logo.png" />
-    <meta name="twitter:site" content="@prestigegroup" />
 
-    <meta name="twitter:creator" content="@prestigegroup" />
     <link rel="apple-touch-icon" sizes="57x57" href="{{URL::asset('resources')}}/assets/images/ico/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="{{URL::asset('resources')}}/assets/images/ico/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="{{URL::asset('resources')}}/assets/images/ico/apple-icon-72x72.png">

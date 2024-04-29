@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('onboarding-form-1');
+    return view('welcome');
 });
 
 Route::get('/onboarding-form-1', function () {
