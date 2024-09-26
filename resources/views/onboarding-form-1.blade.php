@@ -1,7 +1,12 @@
 
 @extends('layouts/master')
 
+
 @section('body')
+
+
+
+
 
 <div class="container form-container ">
     <div class="row p-3">

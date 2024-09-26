@@ -39,6 +39,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="{{URL::asset('resources')}}/assets/css/custom.css">
     <link href="
 https://cdn.jsdelivr.net/npm/sweetalert2@11.10.7/dist/sweetalert2.min.css
 " rel="stylesheet">
@@ -51,106 +52,8 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.7/dist/sweetalert2.all.min.js
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    <style>
-        .form-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* height: 100vh; */
-            margin-top: 20px;
-        }
-
-        /* Adjust form width for mobile */
-        @media (max-width: 500px) {
-            .form-container {
-                padding: 0 15px;
-            }
-        }
-
-        .input-with-icon {
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>');
-            background-repeat: no-repeat;
-            background-position: 10px center;
-            padding-left: 35px;
-            opacity: 8 0%;
-            /* Adjust based on the size of the icon */
-        }
-
-        .heading {
-            border-radius: 5px;
-            font-size: medium;
-        }
-
-        label.error {
-            background: #c30e0e;
-            font-size: 10px;
-            color: white;
-            padding: 0px 8px;
-            position: absolute;
-            line-height: 1.5;
-        }
-
-
-
-        .loader {
-            display: flex;
-            text-align: center;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            position: fixed;
-            width: 100%;
-            z-index: 1000000000;
-            background: rgba(0, 0, 0, 0.7);
-        }
-
-        .ring {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            animation: ring 4s linear infinite;
-        }
-
-        @keyframes ring {
-            0% {
-                transform: rotate(0deg);
-                box-shadow: 1px 3px 2px #7367F0;
-            }
-
-            50% {
-                transform: rotate(180deg);
-                box-shadow: 1px 3px 2px #7367F0;
-            }
-
-            100% {
-                transform: rotate(0360deg);
-                box-shadow: 1px 3px 2px #7367F0;
-            }
-        }
-
-        .ring::before {
-            position: absolute;
-            left: 0;
-            content: "";
-            top: 0;
-            height: 100%;
-            width: 100%;
-            border-radius: 50%;
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-        }
-
-        .loader span {
-            display: none;
-            color: #ff962a;
-            font-size: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            line-height: 200px;
-            animation: text 3s ease-in-out infinite;
-        }
-    </style>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
