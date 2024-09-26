@@ -38,3 +38,7 @@ Route::post('upload', [OnBoardingFormController::class, 'UpdateOnboardingStep4']
 Route::get('/onboarding-form-6', function () {
     return view('onboarding-form-6');
 });
+Route::get('/test/env', function () {
+    dd(env('DB_DATABASE')); // Dump 'db' variable value one by one
+});
+
