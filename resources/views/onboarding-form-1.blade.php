@@ -133,7 +133,7 @@
             });
         }
     });
-    $('#gst_number').on('keypress', function() {
+    $('#gst_number').on('input keyup keydown keypress', function() {
         $(this).val($(this).val().toUpperCase());
     });
 </script>
