@@ -48,6 +48,7 @@
 
     $('#do_you_have_store_manager').change(function() {
         // Check if the selected value is 'yes'
+        console.log($(this).prop("checked"))
         if ($(this).prop("checked")) {
             $('.storemanageerdiv').removeClass('hidden-but-space').addClass('visible');
 

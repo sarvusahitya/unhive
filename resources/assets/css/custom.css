@@ -138,4 +138,16 @@
 
 
 
-        
+        .hidden-but-space {
+            visibility: hidden;
+            height: 0;
+            overflow: hidden;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        /* Standard visible state */
+        .visible {
+            visibility: visible;
+            height: auto;
+            overflow: visible;
+        }

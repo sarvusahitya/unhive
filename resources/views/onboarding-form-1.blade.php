@@ -1,4 +1,3 @@
-
 @extends('layouts/master')
 
 
@@ -106,7 +105,6 @@
                 success: function(response) {
 
 
-
                     if (response.status == true) {
 
                         ShowToastMessage("Saved Successfully")
@@ -134,6 +132,9 @@
                 }
             });
         }
+    });
+    $('#gst_number').on('keypress', function() {
+        $(this).val($(this).val().toUpperCase());
     });
 </script>
 @endsection
