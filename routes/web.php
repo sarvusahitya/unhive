@@ -38,7 +38,12 @@ Route::post('upload', [OnBoardingFormController::class, 'UpdateOnboardingStep4']
 Route::get('/onboarding-form-6', function () {
     return view('onboarding-form-6');
 });
-Route::get('/test/env', function () {
-    dd(env('DB_DATABASE')); // Dump 'db' variable value one by one
+Route::get('/search-retailer', function () {
+    return view('search-retailer');
 });
-
+Route::get('/retailer-detail', function () {
+    return view('retailer-detail');
+});
+Route::get('/retailer-product-detail', function () {
+    return view('retailer-product-detail');
+});

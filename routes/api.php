@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ContactProductController;
+use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\OnBoardingFormController;
+use App\Http\Controllers\ProductsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +25,9 @@ Route::post('onboardingstep1', [OnBoardingFormController::class, 'OnboardingStep
 Route::post('onboardingstep2', [OnBoardingFormController::class, 'UpdateOnboardingStep2']);
 Route::post('onboardingstep3', [OnBoardingFormController::class, 'UpdateOnboardingStep3']);
 Route::post('uploaddocuments', [OnBoardingFormController::class, 'UploadDocuments']);
+Route::get('/search-contacts', [ContactsController::class, 'search']);
+Route::post('/productbyguid', [ProductsController::class, 'searchByGuid']);
+Route::get('/search-products', [ProductsController::class, 'search']);
+Route::post('/contact/product', [ContactProductController::class, 'addOrUpdateProduct']);
+Route::post('/updatequantity', [ProductsController::class, 'updateQuantity']);
+Route::post('/getcontactproductdata', [ProductsController::class, 'getContactProductData']);
