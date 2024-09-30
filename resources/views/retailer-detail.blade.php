@@ -124,7 +124,6 @@
                         '<div class="card h-100">' +
                         '<div class="card-body">' +
                         '<h5 class="card-title">' + item.product_name + '</h5>' +
-                        '<label for="quantity-1">Quantity</label>' +
                         '<div class="input-group">' +
                         '<button class="btn btn-outline-secondary decrement" type="button" data-product-id="' + item.id + '">-</button>' +
                         '<input type="number" id="quantity-' + item.id + '" class="form-control quantity-input prod_' + item.id + '" data-product-id="' + item.id + '" value="' + item.quantity + '">' +
