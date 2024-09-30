@@ -39,7 +39,7 @@
                             $.each(data, function(index, contact) {
                                 var updated_at = formatDate(contact.updated_at)
 
-                                $('#suggestions').append('<li> <a href="retailer-detail?contact_guid=' + contact.guid + '">' + contact.contact_name + '</a> (Sales Person:' + contact.cf_sales_person_name + ')(Last Updated:' + updated_at + ')</li>');
+                                $('#suggestions').append('<li> <a href="retailer-detail?contact_guid=' + contact.guid + '">' + contact.contact_name + '</a> (Sales Person:' + contact.cf_sales_person_name + ') (Last Updated:' + updated_at + ')</li>');
                             });
                         } else {
                             $('#suggestions').append('<li>No contacts found</li>');
