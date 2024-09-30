@@ -11,7 +11,6 @@
                     <th>Contact Name</th>
                     <!-- <th>Billing City</th> -->
                     <th>CF Sales Person Name</th>
-                    <th>Action</th>
                 </tr>
             </thead>
         </table>
@@ -50,15 +49,22 @@
                     {
                         data: 'cf_sales_person_name'
                     },
-                    {
-                        data: null,
-                        orderable: false,
-                        searchable: false,
-                        render: function(data, type, row) {
-                            return '<a class="btn btn-primary btn-sm export-btn"  href="javascript:void(0);" data-id="' + row.id + '">Export</a>';
-                        }
-                    }
+                    // {
+                    //     data: null,
+                    //     orderable: false,
+                    //     searchable: false,
+                    //     render: function(data, type, row) {
+                    //         return '<a class="btn btn-primary btn-sm export-btn"  href="javascript:void(0);" data-id="' + row.id + '">Export</a>';
+                    //     }
+                    // }
                 ],
+                dom: 'Bfrtip', // This enables the button container
+
+                buttons: [{
+                    text: 'Export', // Button text
+                    className: 'btn btn-info btn-sm export-btn',
+
+                }],
                 order: [
                     [0, 'desc']
                 ], // Default sorting (by ID descending)
@@ -72,8 +78,8 @@
 
 
 
-            var id = $(this).data('id'); // Get the ID from the button's data attribute
-            formData.append('contact_id', id); // Add your data to FormData
+            // var id = $(this).data('id'); // Get the ID from the button's data attribute
+            // formData.append('contact_id', id); // Add your data to FormData
             $.ajax({
                 url: "{{ config('constants.API_URL') }}generateexportretailer", // Replace with your API endpoint for exporting
                 processData: false, // Important! Tell jQuery not to process the data

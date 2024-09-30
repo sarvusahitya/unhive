@@ -40,7 +40,8 @@ class ContactProductController extends Controller
     {
         // Fetch all contact_product data with related contact and product
         // $contactsProducts = ContactsProducts::where('contact_id', $request->input('contact_id'))->get(); // Use actual contact ID here
-        $contactsProducts = ContactsProducts::with(['contacts', 'products'])->where('contact_id', $request->input('contact_id'))->get();
+        $contactsProducts = ContactsProducts::with(['contacts', 'products'])->orderBy('contact_id') // Specify the column to order by
+            ->get();
 
 
         if (count($contactsProducts) > 0) {
