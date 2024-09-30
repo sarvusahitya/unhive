@@ -61,6 +61,7 @@ class ContactProductController extends Controller
             $csvData .= implode(',', $csvHeader) . "\n";  // Add headers
 
             foreach ($contactsProducts as $contactProduct) {
+                $updated_at = $contactProduct->updated_at->setTimezone('Asia/Kolkata')->format('Y-m-d H:i:s');
 
                 $csvData .= implode(',', [
                     $contactProduct->updated_at ?? 'N/A',  // Assuming 'name' is a field in Contact
