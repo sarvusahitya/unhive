@@ -35,3 +35,6 @@ Route::post('/updatequantity', [ProductsController::class, 'updateQuantity']);
 Route::post('/getcontactproductdata', [ProductsController::class, 'getContactProductData']);
 Route::post('/getproductallcategory', [ProductsController::class, 'getGroupByProductCategory']);
 Route::post('/generateexportretailer', [ContactProductController::class, 'generateExportRetailer']);
+
+
+Route::get('/retailerlist', [ContactsController::class, 'retailerList']);

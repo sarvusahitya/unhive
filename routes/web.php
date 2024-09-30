@@ -47,3 +47,10 @@ Route::get('/retailer-detail', function () {
 Route::get('/retailer-product-detail', function () {
     return view('retailer-product-detail');
 });
+Route::get('/retailer-list', function () {
+    return view('retailer-list');
+});
+Route::get('/downloadretailerwiseexport/{file}', function ($file) {
+    $filePath = storage_path('app/exports/' . $file);
+    return response()->download($filePath);
+});

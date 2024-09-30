@@ -26,7 +26,7 @@
             // If query length is greater than 3, trigger search
             if (query.length > 2) {
                 $.ajax({
-                    url: "{{ config('constants.API_URL') }}search-contacts",
+                    url: "{{ config(key: 'constants.API_URL') }}search-contacts",
                     method: 'GET',
                     data: {
                         query: query

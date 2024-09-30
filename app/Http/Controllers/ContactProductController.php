@@ -67,13 +67,21 @@ class ContactProductController extends Controller
             }
 
             // Save the CSV file to storage
-            Storage::put('exports/' . $fileName, $csvData);
+            $filePath = 'exports/' . $fileName;
+            Storage::disk('local')->put($filePath, $csvData);
+            // Storage::move($filePath, 'public/exports/' . $fileName);
+            $url = asset('exports/' . $fileName);
 
+
+            $link = config('constants.BASE_URL') . "downloadretailerwiseexport/" . $fileName;
+
+            // Use the absolute path for further file operations
+            // $fileAbsolutePath = storage_path('app/' . $filePath);
 
             // Return the CSV as a response to download
-            return response()->json(['message' => 'Data Saved Successfully.', "link" => ""], 200);
+            return response()->json(['message' => 'Data Saved Successfully.', 'data' => $contactsProducts, "link" => $link]);
         } else {
-            return response()->json(['message' => 'No Data Found For Export.', "link" => ""], 200);
+            return response()->json(['message' => 'No Data Found For Export.', 'data' => [], "link" => ""], 200);
         }
         // File name to save in the storage
     }
