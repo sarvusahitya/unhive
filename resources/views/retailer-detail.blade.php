@@ -5,6 +5,13 @@
 <div class="container form-container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-12 col-12">
+            <!-- Back Arrow for Home Page -->
+            <a href="{{URL::asset('search-retailer')}}" class="form-label btn btn-info">
+                <i class="bi bi-house-fill"></i> Home
+            </a>
+        </div>
+
+        <div class="col-md-12 col-12 mt-5">
             <div class="form-group">
                 <label for="search-input" class="form-label">Search Product </label>
                 <div class="input-group">

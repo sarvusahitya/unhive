@@ -4,7 +4,13 @@
 
 <div class="container form-container mt-4">
     <div class="row justify-content-center">
-        <div class="card">
+        <div class="col-md-12 col-12">
+            <!-- Back Arrow for Home Page -->
+            <a href="{{URL::asset('search-retailer')}}" class="form-label btn btn-info">
+                <i class="bi bi-house-fill"></i> Home
+            </a>
+        </div>
+        <div class="card col-md-12 col-12 mt-5">
             <img src="https://via.placeholder.com/150" class="card-img-top" alt="dd">
             <div class="card-body">
                 <h5 class="card-title" id="product-name">dd</h5>
