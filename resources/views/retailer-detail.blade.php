@@ -111,10 +111,12 @@
                 contact_guid: contact_guid
             },
             success: function(response) {
-                alert(response.message);
+                ShowToastMessage(response.message)
+
             },
             error: function(xhr) {
-                alert('Error updating quantity');
+                ShowToastMessage("Error updating quantity", "failed")
+
             }
         });
     });
