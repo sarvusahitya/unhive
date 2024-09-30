@@ -167,7 +167,7 @@
 
                 if (response.data.length != 0) {
                     $.each(response.data, function(i, item) {
-                        var row = "<option value=" + item.category_name + ">" + item.category_name + "</option>";
+                        var row = "<option value='" + item.category_name + "'>" + item.category_name + "</option>";
                         $("#product_category").append(row)
                     });
                 } else {
