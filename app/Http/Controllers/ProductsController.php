@@ -21,6 +21,35 @@ class ProductsController extends Controller
         return response()->json($contacts);
     }
 
+    public function getAllProductByCategory(Request $request)
+    {
+        $product_category = $request->input('product_category');
+        $contact_guid = $request->input('contact_guid');
+        $contact = Contacts::where('guid', $contact_guid)->first(); // Use actual contact ID here
+
+
+
+        $contactProductQuantities = ContactsProducts::where('contact_id', $contact->id)
+            ->pluck('quantity', 'product_id'); // Pluck quantities indexed by product_id
+
+        // print_r($contactProductQuantities);
+        // Search contacts by contact_name
+        $products = Products::where('category_name', $product_category)->get();
+
+        foreach ($products as $product) {
+            if ($contactProductQuantities->has($product->id)) {
+                // Override the product quantity with the quantity from contact
+                $product->quantity = $contactProductQuantities->get($product->id);
+            } else {
+                // Optionally set a default quantity or leave it as is
+                $product->quantity = 0; // or any default value you want
+            }
+        }
+
+        // Return the JSON response
+        return response()->json($products);
+    }
+
     public function searchByGuid(Request $request)
     {
         $contact_guid = $request->input('contact_guid');

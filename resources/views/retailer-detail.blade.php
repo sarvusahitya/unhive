@@ -20,7 +20,7 @@
         </div>
 
 
-        <div class="col-md-6  col-sm-12">
+        <div class="col-md-6  col-sm-12 d-none">
 
 
             <div class="form-group">
@@ -41,9 +41,12 @@
 <script>
     var urlParams = new URLSearchParams(window.location.search);
     var contact_guid = urlParams.get('contact_guid');
-    getProductData(contact_guid);
-
     getallategory();
+    setTimeout(() => {
+
+        getProductData(contact_guid);
+    }, 500);
+
 
     $(document).ready(function() {
         $('#search-input').on('keypress keydown keyup', function() {
@@ -86,20 +89,24 @@
 
     function getProductData(contact_guid) {
         var formData = new FormData();
+        var product_category = $("#product_category").val()
+
+        formData.append('product_category', product_category); // Add your data to FormData
+
         formData.append('contact_guid', contact_guid); // Add your data to FormData
 
         $.ajax({
-            url: "{{ config('constants.API_URL') }}getcontactproductdata",
+            url: "{{ config('constants.API_URL') }}getallproductsbycategory",
             processData: false, // Important! Tell jQuery not to process the data
             contentType: false, // Important! Tell jQuery not to set contentType
             method: 'POST',
             data: formData, // Send the FormData object
             success: function(data) {
-                console.log(data);
-                $('.product-list').html("")
+                $('.product_list').html("")
 
-                $.each(data.data[0].products, function(i, item) {
+                $.each(data, function(i, item) {
 
+                    console.log(item.quantity)
 
                     var bindlist =
                         '<div class="col-md-6 col-lg-12 mb-4">' +
@@ -108,8 +115,8 @@
                         '<div class="card-body">' +
                         '<h5 class="card-title">' + item.product_name + '</h5>' +
                         '<label for="quantity-1">Quantity</label>' +
-                        '<input type="number" id="quantity-1" class="form-control quantity-input prod_' + item.pivot.product_id + ' " data-product-id="' + item.pivot.product_id + '" value="' + item.pivot.quantity + '">' +
-                        '<button class="btn btn-primary mt-2 update-quantity   " data-product-id="' + item.pivot.product_id + '" data-quantity="' + item.pivot.quantity + '" >Update Quantity</button>' +
+                        '<input type="number" id="quantity-1" class="form-control quantity-input prod_' + item.id + ' " data-product-id="' + item.id + '" value="' + item.quantity + '">' +
+                        '<button class="btn btn-primary mt-2 update-quantity   " data-product-id="' + item.id + '" data-quantity="' + item.quantity + '" >Update Quantity</button>' +
                         '</div>' +
                         '</div>' +
                         '</div>';
@@ -125,6 +132,9 @@
             }
         });
     }
+    $(document).on('change', '#product_category', function() {
+        getProductData(contact_guid)
+    });
     $(document).on('click', '.update-quantity', function() {
 
 

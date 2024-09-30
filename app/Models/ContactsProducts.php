@@ -26,4 +26,12 @@ class ContactsProducts extends Model
             $query->orderBy('created_at', 'desc');
         });
     }
+    public function contacts()
+    {
+        return $this->belongsTo(Contacts::class, 'contact_id');
+    }
+    public function products()
+    {
+        return $this->belongsTo(Products::class, 'product_id');
+    }
 }
