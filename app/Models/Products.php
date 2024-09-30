@@ -32,9 +32,9 @@ class Products extends Model
             }
         });
         // Default order for all queries on this model
-        static::addGlobalScope('order', function ($query) {
-            $query->orderBy('created_at', 'desc');
-        });
+        // static::addGlobalScope('order', function ($query) {
+        //     $query->orderBy('created_at', 'desc');
+        // });
     }
     public function contacts()
     {

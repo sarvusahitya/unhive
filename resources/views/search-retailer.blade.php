@@ -16,55 +16,7 @@
     </div>
 </div>
 
-<!-- Custom styling for mobile and desktop responsiveness -->
-<style>
-    /* Ensure suggestions stay visible and well-positioned */
-    #suggestions {
-        position: absolute;
-        width: 100%;
-        z-index: 1000;
-        background-color: white;
-        border: 1px solid #ced4da;
-        border-radius: 0.25rem;
-        max-height: 250px;
-        /* Set a max height for scroll */
-        overflow-y: auto;
-    }
 
-    #suggestions li {
-        padding: 10px;
-        cursor: pointer;
-    }
-
-    #suggestions li:hover {
-        background-color: #f1f1f1;
-    }
-
-    /* Style the links inside the suggestion list */
-    #suggestions li a {
-        text-decoration: none;
-        color: inherit;
-        display: block;
-    }
-
-    #suggestions li a:hover {
-        color: #007bff;
-        /* Change color on hover */
-    }
-
-    /* Media query for smaller screens */
-    @media (max-width: 576px) {
-        #search-input {
-            font-size: 1rem;
-            /* Adjust font size for mobile */
-        }
-
-        #suggestions li {
-            font-size: 0.9rem;
-            /* Smaller font for suggestion items on mobile */
-        }
-    }
-</style>
 
 <script>
     $(document).ready(function() {

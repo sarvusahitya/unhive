@@ -11,10 +11,11 @@ class ProductsController extends Controller
 {
     public function search(Request $request)
     {
+        $product_category = $request->input('product_category');
         $search = $request->input('query');
 
         // Search contacts by contact_name
-        $contacts = Products::where('product_name', 'LIKE', "%{$search}%")->get();
+        $contacts = Products::where('product_name', 'LIKE', "%{$search}%")->where('category_name', $product_category)->get();
 
         // Return the JSON response
         return response()->json($contacts);
@@ -75,5 +76,17 @@ class ProductsController extends Controller
 
 
         return response()->json(['message' => 'Data.', 'data' => $productdata], 200);
+    }
+
+    public function getGroupByProductCategory(Request $request)
+    {
+
+        $categories = Products::select('category_name')
+            ->groupBy('category_name')
+            ->orderBy('category_name', 'asc') // Optional: to sort alphabetically
+            ->get();
+
+
+        return response()->json(['message' => 'Data.', 'data' => $categories], 200);
     }
 }

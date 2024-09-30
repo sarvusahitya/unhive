@@ -27,7 +27,8 @@ Route::post('onboardingstep3', [OnBoardingFormController::class, 'UpdateOnboardi
 Route::post('uploaddocuments', [OnBoardingFormController::class, 'UploadDocuments']);
 Route::get('/search-contacts', [ContactsController::class, 'search']);
 Route::post('/productbyguid', [ProductsController::class, 'searchByGuid']);
-Route::get('/search-products', [ProductsController::class, 'search']);
+Route::post('/search-products', [ProductsController::class, 'search']);
 Route::post('/contact/product', [ContactProductController::class, 'addOrUpdateProduct']);
 Route::post('/updatequantity', [ProductsController::class, 'updateQuantity']);
 Route::post('/getcontactproductdata', [ProductsController::class, 'getContactProductData']);
+Route::post('/getproductallcategory', [ProductsController::class, 'getGroupByProductCategory']);

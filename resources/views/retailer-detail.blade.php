@@ -11,7 +11,18 @@
             </a>
         </div>
 
-        <div class="col-md-12 col-12 mt-5">
+        <div class="col-md-6 col-sm-12 mt-2">
+            <div class="form-group">
+                <label for="status">Category</label>
+                <select id="product_category" name="product_category" required class="select2">
+                </select>
+            </div>
+        </div>
+
+
+        <div class="col-md-6  col-sm-12">
+
+
             <div class="form-group">
                 <label for="search-input" class="form-label">Search Product </label>
                 <div class="input-group">
@@ -31,18 +42,30 @@
     var urlParams = new URLSearchParams(window.location.search);
     var contact_guid = urlParams.get('contact_guid');
     getProductData(contact_guid);
+
+    getallategory();
+
     $(document).ready(function() {
         $('#search-input').on('keypress keydown keyup', function() {
             var query = $('#search-input').val();
+            var product_category = $("#product_category").val()
+
+            var formData = new FormData();
+            formData.append('query', query); // Add your data to FormData
+            formData.append('product_category', product_category); // Add your data to FormData
+
+
+
+
 
             // If query length is greater than 3, trigger search
             if (query.length > 2) {
                 $.ajax({
                     url: "{{ config('constants.API_URL') }}search-products",
-                    method: 'GET',
-                    data: {
-                        query: query
-                    },
+                    processData: false, // Important! Tell jQuery not to process the data
+                    contentType: false, // Important! Tell jQuery not to set contentType
+                    method: 'POST',
+                    data: formData,
                     success: function(data) {
                         $('#suggestions').empty();
                         if (data.length > 0) {
@@ -127,6 +150,41 @@
             }
         });
     });
+
+
+    function getallategory() {
+        loaderShow();
+        var formdata = {};
+        $.ajax({
+            method: "POST",
+            url: "{{ config('constants.API_URL')}}getproductallcategory",
+            //dataType: "json",
+            data: formdata,
+
+            success: function(response) {
+
+                $("#product_category").html("")
+
+                if (response.data.length != 0) {
+                    $.each(response.data, function(i, item) {
+                        var row = "<option value=" + item.category_name + ">" + item.category_name + "</option>";
+                        $("#product_category").append(row)
+                    });
+                } else {
+                    var row = "<tr><td colspan='4' style='text-align:center'>No Data Found</td></tr>"
+                    $("#product_category").append(row)
+
+                }
+
+
+            },
+            complete: function() {
+
+                $("#product_category").select2();
+            },
+            error: function(xhr, ajaxOptions, thrownError) {}
+        });
+    }
 </script>
 
 @endsection
