@@ -122,7 +122,6 @@
                     var bindlist =
                         '<div class="col-md-6 col-lg-12 mb-4">' +
                         '<div class="card h-100">' +
-                        '<img src="https://via.placeholder.com/150" class="card-img-top" alt="Product Image">' +
                         '<div class="card-body">' +
                         '<h5 class="card-title">' + item.product_name + '</h5>' +
                         '<label for="quantity-1">Quantity</label>' +
