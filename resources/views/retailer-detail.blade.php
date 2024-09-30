@@ -20,6 +20,15 @@
         </div>
 
 
+
+
+
+
+
+
+        <!-- Repeat for more products -->
+
+
         <div class="col-md-6  col-sm-12 d-none">
 
 
@@ -49,6 +58,9 @@
 
 
     $(document).ready(function() {
+
+
+
         $('#search-input').on('keypress keydown keyup', function() {
             var query = $('#search-input').val();
             var product_category = $("#product_category").val()
@@ -106,7 +118,6 @@
 
                 $.each(data, function(i, item) {
 
-                    console.log(item.quantity)
 
                     var bindlist =
                         '<div class="col-md-6 col-lg-12 mb-4">' +
@@ -115,7 +126,11 @@
                         '<div class="card-body">' +
                         '<h5 class="card-title">' + item.product_name + '</h5>' +
                         '<label for="quantity-1">Quantity</label>' +
-                        '<input type="number" id="quantity-1" class="form-control quantity-input prod_' + item.id + ' " data-product-id="' + item.id + '" value="' + item.quantity + '">' +
+                        '<div class="input-group">' +
+                        '<button class="btn btn-outline-secondary decrement" type="button" data-product-id="' + item.id + '">-</button>' +
+                        '<input type="number" id="quantity-' + item.id + '" class="form-control quantity-input prod_' + item.id + '" data-product-id="' + item.id + '" value="' + item.quantity + '">' +
+                        '<button class="btn btn-outline-secondary increment" type="button" data-product-id="' + item.id + '">+</button>' +
+                        '</div>' +
                         '<button class="btn btn-primary mt-2 update-quantity   " data-product-id="' + item.id + '" data-quantity="' + item.quantity + '" >Update Quantity</button>' +
                         '</div>' +
                         '</div>' +
@@ -134,6 +149,23 @@
     }
     $(document).on('change', '#product_category', function() {
         getProductData(contact_guid)
+    });
+
+    $(document).on('click', '.decrement', function() {
+
+        var productId = $(this).data('product-id');
+        var input = $('#quantity-' + productId);
+        var value = parseInt(input.val());
+        if (value > 1) {
+            input.val(value - 1);
+        }
+    });
+    $(document).on('click', '.increment', function() {
+
+        var productId = $(this).data('product-id');
+        var input = $('#quantity-' + productId);
+        var value = parseInt(input.val());
+        input.val(value + 1);
     });
     $(document).on('click', '.update-quantity', function() {
 
