@@ -73,7 +73,6 @@
 
 
             var id = $(this).data('id'); // Get the ID from the button's data attribute
-            alert(id)
             formData.append('contact_id', id); // Add your data to FormData
             $.ajax({
                 url: "{{ config('constants.API_URL') }}generateexportretailer", // Replace with your API endpoint for exporting
@@ -83,6 +82,17 @@
                 data: formData,
                 success: function(response) {
                     console.log(response.link)
+                    if (response.link != "") {
+
+                        ShowToastMessage(response.message, );
+                        setTimeout(() => {
+                            window.location.href = response.link
+                        }, 500);
+                    } else {
+                        ShowToastMessage(response.message, "failed");
+
+                    }
+
                     // Assuming the API response contains the file URL for download
 
                 },

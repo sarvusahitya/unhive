@@ -79,7 +79,7 @@ class ContactProductController extends Controller
             // $fileAbsolutePath = storage_path('app/' . $filePath);
 
             // Return the CSV as a response to download
-            return response()->json(['message' => 'Data Saved Successfully.', 'data' => $contactsProducts, "link" => $link]);
+            return response()->json(['message' => 'Please hold while the export is being generated. It will automatically download to your device shortly.', 'data' => $contactsProducts, "link" => $link]);
         } else {
             return response()->json(['message' => 'No Data Found For Export.', 'data' => [], "link" => ""], 200);
         }
