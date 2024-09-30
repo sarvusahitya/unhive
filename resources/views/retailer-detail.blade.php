@@ -4,14 +4,20 @@
 
 <div class="container form-container mt-4">
     <div class="row justify-content-center">
-        <div class="col-md-12 col-12">
+        <div class="col-3 ">
             <!-- Back Arrow for Home Page -->
             <a href="{{URL::asset('search-retailer')}}" class="form-label btn btn-info">
                 <i class="bi bi-house-fill"></i> Home
             </a>
+
+        </div>
+        <div class="col-9 ">
+            <!-- Back Arrow for Home Page -->
+            <h2 id="retailer-title"></h2>
+            <span id="last-updated"></span>
         </div>
 
-        <div class="col-md-6 col-sm-12 mt-2">
+        <div class="col-md-12 col-sm-12 ">
             <div class="form-group">
                 <label for="status">Category</label>
                 <select id="product_category" name="product_category" required class="select2">
@@ -50,7 +56,8 @@
 <script>
     var urlParams = new URLSearchParams(window.location.search);
     var contact_guid = urlParams.get('contact_guid');
-    getallategory();
+    getcontactdetails(contact_guid);
+    getallcategory();
     setTimeout(() => {
 
         getProductData(contact_guid);
@@ -192,7 +199,7 @@
     });
 
 
-    function getallategory() {
+    function getallcategory() {
         loaderShow();
         var formdata = {};
         $.ajax({
@@ -221,6 +228,35 @@
             complete: function() {
 
                 $("#product_category").select2();
+            },
+            error: function(xhr, ajaxOptions, thrownError) {}
+        });
+    }
+
+    function getcontactdetails(contact_guid) {
+
+        var formData = new FormData()
+
+        formData.append('guid', contact_guid); // Add your data to FormData
+        $.ajax({
+            method: "POST",
+            url: "{{ config('constants.API_URL')}}getcontactbyguid",
+            processData: false, // Important! Tell jQuery not to process the data
+            contentType: false, // Important! Tell jQuery not to set contentType
+            method: 'POST',
+            data: formData, // Send the FormData object
+            success: function(response) {
+
+
+                var updated_at = formatDate(response[0].updated_at)
+                var title = response[0].contact_name
+                var last = "(Last Updated " + updated_at + " )"
+
+                $('#retailer-title').text(title)
+                $('#last-updated').text(last)
+            },
+            complete: function() {
+
             },
             error: function(xhr, ajaxOptions, thrownError) {}
         });

@@ -18,6 +18,17 @@ class ContactsController extends Controller
         // Return the JSON response
         return response()->json($contacts);
     }
+
+    public function getContactByGuid(Request $request)
+    {
+        $guid = $request->input('guid');
+
+        // Search contacts by contact_name
+        $contacts = Contacts::where('guid', $guid)->get();
+
+        // Return the JSON response
+        return response()->json($contacts);
+    }
     public function retailerList(Request $request)
     {
         // Start query

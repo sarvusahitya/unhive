@@ -94,6 +94,9 @@ class ProductsController extends Controller
             ]);
         }
 
+        $contact->updated_at = now();
+        $contact->save(); // Saves the changes
+
         return response()->json(['message' => 'Product quantity updated successfully.'], 200);
     }
 

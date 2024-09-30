@@ -38,3 +38,4 @@ Route::post('/generateexportretailer', [ContactProductController::class, 'genera
 
 
 Route::get('/retailerlist', [ContactsController::class, 'retailerList']);
+Route::post('/getcontactbyguid', [ContactsController::class, 'getContactByGuid']);

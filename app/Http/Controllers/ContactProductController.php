@@ -40,7 +40,7 @@ class ContactProductController extends Controller
     {
         // Fetch all contact_product data with related contact and product
         // $contactsProducts = ContactsProducts::where('contact_id', $request->input('contact_id'))->get(); // Use actual contact ID here
-        $contactsProducts = ContactsProducts::with(['contacts', 'products'])->orderBy('contact_id') // Specify the column to order by
+        $contactsProducts = ContactsProducts::with(['contacts', 'products'])->whereNot('quantity', 0)->orderBy('contact_id') // Specify the column to order by
             ->get();
 
 
@@ -50,6 +50,7 @@ class ContactProductController extends Controller
 
             // Define CSV headers
             $csvHeader = [
+                'Last Updated On',
                 'Contact Name',
                 'Product Name',
                 'Quantity',
@@ -60,7 +61,9 @@ class ContactProductController extends Controller
             $csvData .= implode(',', $csvHeader) . "\n";  // Add headers
 
             foreach ($contactsProducts as $contactProduct) {
+
                 $csvData .= implode(',', [
+                    $contactProduct->updated_at ?? 'N/A',  // Assuming 'name' is a field in Contact
                     $contactProduct->contacts->contact_name ?? 'N/A',  // Assuming 'name' is a field in Contact
                     $contactProduct->products->product_name ?? 'N/A',  // Assuming 'name' is a field in Product
                     $contactProduct->quantity,

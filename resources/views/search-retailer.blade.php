@@ -4,7 +4,8 @@
 
 <div class="container form-container mt-4">
     <div class="row justify-content-center">
-        <div class="col-md-12 col-12">
+        <h1 class="text-center"><b>Physical Stock Data Collection</b></h1>
+        <div class="col-md-12 col-12 mt-1">
             <div class="form-group">
                 <label for="search-input" class="form-label">Search Contacts by Name</label>
                 <div class="input-group">
@@ -36,7 +37,9 @@
                         $('#suggestions').empty();
                         if (data.length > 0) {
                             $.each(data, function(index, contact) {
-                                $('#suggestions').append('<li> <a href="retailer-detail?contact_guid=' + contact.guid + '">' + contact.contact_name + '</a></li>');
+                                var updated_at = formatDate(contact.updated_at)
+
+                                $('#suggestions').append('<li> <a href="retailer-detail?contact_guid=' + contact.guid + '">' + contact.contact_name + '</a> (Sales Person:' + contact.cf_sales_person_name + ')(Last Updated:' + updated_at + ')</li>');
                             });
                         } else {
                             $('#suggestions').append('<li>No contacts found</li>');

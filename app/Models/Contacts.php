@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Contacts extends Model
 {
@@ -29,10 +30,6 @@ class Contacts extends Model
             if (empty($onboardingForm->guid)) {
                 $onboardingForm->guid = Str::uuid()->toString();
             }
-        });
-        // Default order for all queries on this model
-        static::addGlobalScope('order', function ($query) {
-            $query->orderBy('created_at', 'desc');
         });
     }
     public function products()
