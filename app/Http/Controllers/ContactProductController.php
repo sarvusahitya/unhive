@@ -52,7 +52,9 @@ class ContactProductController extends Controller
             $csvHeader = [
                 'Last Updated On',
                 'Contact Name',
+                'ASM name',
                 'Product Name',
+                'Product Category',
                 'Quantity',
             ];
 
@@ -66,7 +68,9 @@ class ContactProductController extends Controller
                 $csvData .= implode(',', [
                     $contactProduct->updated_at ?? 'N/A',  // Assuming 'name' is a field in Contact
                     $contactProduct->contacts->contact_name ?? 'N/A',  // Assuming 'name' is a field in Contact
+                    $contactProduct->contacts->cf_sales_person_name ?? 'N/A',  // Assuming 'name' is a field in Contact
                     $contactProduct->products->product_name ?? 'N/A',  // Assuming 'name' is a field in Product
+                    $contactProduct->products->category_name ?? 'N/A',  // Assuming 'name' is a field in Product
                     $contactProduct->quantity,
                 ]) . "\n";
             }
