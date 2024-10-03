@@ -54,3 +54,8 @@ Route::get('/downloadretailerwiseexport/{file}', function ($file) {
     $filePath = storage_path('app/exports/' . $file);
     return response()->download($filePath);
 });
+
+
+Route::get('/pay', function () {
+    return view('pay');
+});
