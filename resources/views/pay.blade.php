@@ -8,6 +8,6 @@
 
 
 
-    <a href="upi://pay?pa=trushitgadhavi99134-1@okaxis&amp;pn=Dukan Name&amp;mc=1234&amp;tid=TxnID12345&amp;tr=1234567890&amp;tn=Online+Payment&amp;am=1.00&amp;cu=INR" class="upi-pay1">
+    <a href="upi://pay?pa=trushitgadhavi99134-2@okaxis&amp;pn=Dukan Name&amp;mc=1234&amp;tid=TxnID12345&amp;tr=1234567890&amp;tn=Online+Payment&amp;am=1.00&amp;cu=INR" class="upi-pay1">
         Pay Now
     </a>
